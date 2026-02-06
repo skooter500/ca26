@@ -1,10 +1,26 @@
 [gd_scene format=3 uid="uid://d2b6vdvvro2e3"]
 
-[ext_resource type="PackedScene" uid="uid://dh3kqcfi5h3e4" path="res://addons/gremlins_first_person/gremlins_fpc.tscn" id="1_acmat"]
 [ext_resource type="Script" uid="uid://bwagclrbup51m" path="res://3dgame/wall.gd" id="2_51bb6"]
 [ext_resource type="PackedScene" uid="uid://ik6op3aamwce" path="res://3dgame/brick.tscn" id="3_usbey"]
 [ext_resource type="Script" uid="uid://c8g56wssedjef" path="res://3dgame/donut.gd" id="4_usbey"]
+[ext_resource type="PackedScene" uid="uid://dh3kqcfi5h3e4" path="res://addons/gremlins_first_person/gremlins_fpc.tscn" id="5_a4dwx"]
 [ext_resource type="AudioStream" uid="uid://bqauxayeawftk" path="res://audio/kornevmusic-epic-478847.mp3" id="5_audkg"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_audkg"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_a4dwx"]
+sky_material = SubResource("ProceduralSkyMaterial_audkg")
+
+[sub_resource type="Environment" id="Environment_5wlby"]
+background_mode = 2
+sky = SubResource("Sky_a4dwx")
+ambient_light_source = 2
+ambient_light_color = Color(0.67481464, 0.67481464, 0.6748146, 1)
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_qwsu0"]
 
@@ -24,6 +40,9 @@ size = Vector3(1.9823608, 0.5272827, 1.8682251)
 
 [node name="root" type="Node3D" unique_id=2093469847]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1703449949]
+environment = SubResource("Environment_5wlby")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=162216289]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
@@ -36,9 +55,6 @@ shape = SubResource("WorldBoundaryShape3D_qwsu0")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ground" unique_id=2096318883]
 mesh = SubResource("PlaneMesh_acmat")
 surface_material_override/0 = SubResource("StandardMaterial3D_vo5re")
-
-[node name="FirstPersonCharacter" parent="." unique_id=1111919887 groups=["player"] instance=ExtResource("1_acmat")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0377791, 0)
 
 [node name="wall" type="Node3D" parent="." unique_id=988263986]
 transform = Transform3D(0.62450683, -3.413944e-08, -0.78101933, 3.413944e-08, 1, -1.6413328e-08, 0.78101933, -1.6413328e-08, 0.62450683, 33.954582, 0.30478555, -15.440181)
@@ -69,6 +85,6 @@ transform = Transform3D(1, -1.04805054e-13, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 operation = 2
 radius = 2.1342773
 
-[connection signal="body_entered" from="donut" to="donut" method="_on_body_entered"]
+[node name="FirstPersonCharacter" parent="." unique_id=1111919887 instance=ExtResource("5_a4dwx")]
 
-[editable path="FirstPersonCharacter"]
+[connection signal="body_entered" from="donut" to="donut" method="_on_body_entered"]

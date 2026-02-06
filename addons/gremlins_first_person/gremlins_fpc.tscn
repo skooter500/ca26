@@ -230,3 +230,10 @@ shape = SubResource("CapsuleShape3D_5oqox")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1174986023]
 mesh = SubResource("CapsuleMesh_5oqox")
 surface_material_override/0 = SubResource("StandardMaterial3D_luvdq")
+
+[node name="TextEdit" type="TextEdit" parent="." unique_id=1018507833]
+offset_left = 128.0
+offset_top = 99.0
+offset_right = 693.0
+offset_bottom = 200.0
+text = "I love computer SCience"

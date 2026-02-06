@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 CsgToolkitAutoload="*uid://w8ad8q4lneis"
 
+[debug_draw_3d]
+
+settings/addon_root_folder="res://addons/debug_draw_3d"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/csg_toolkit/plugin.cfg")
@@ -87,4 +91,10 @@ sprint={
 
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
 anti_aliasing/quality/msaa_3d=2
+
+[xr]
+
+openxr/startup_alert=false
+shaders/enabled=true
