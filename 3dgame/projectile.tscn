@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://0xag2d5ypnpx"]
+
+[ext_resource type="Script" uid="uid://ycrqswunsar3" path="res://3dgame/projectile.gd" id="1_25oqd"]
+[ext_resource type="Material" uid="uid://12bqh76svrfe" path="res://tank_game_3d/blue.tres" id="1_l5kmn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kxho2"]
+size = Vector3(0.06, 0.06, 0.06)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5svog"]
+size = Vector3(0.060180664, 0.055786133, 0.06958008)
+
+[node name="projectile" type="Area3D" unique_id=1363616871]
+script = ExtResource("1_25oqd")
+speed = 5.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=163046590]
+mesh = SubResource("BoxMesh_kxho2")
+surface_material_override/0 = ExtResource("1_l5kmn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2012208668]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0006713867, -6.1035156e-05, 0.0020751953)
+shape = SubResource("BoxShape3D_5svog")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

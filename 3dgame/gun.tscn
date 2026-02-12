@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://2yfluwa6ndvl"]
+
+[ext_resource type="Material" uid="uid://12bqh76svrfe" path="res://tank_game_3d/blue.tres" id="1_kxho2"]
+[ext_resource type="Script" uid="uid://7i2xuv0vb6lm" path="res://3dgame/gun.gd" id="2_5svog"]
+[ext_resource type="PackedScene" uid="uid://0xag2d5ypnpx" path="res://3dgame/projectile.tscn" id="3_aujq8"]
+[ext_resource type="AudioStream" uid="uid://tykko7nf08el" path="res://audio/shoot_sound.sfxr" id="4_1x57m"]
+
+[node name="gun" type="CSGBox3D" unique_id=255565113]
+size = Vector3(0.07373047, 0.053588867, 0.6583252)
+material = ExtResource("1_kxho2")
+script = ExtResource("2_5svog")
+projectile_scene = ExtResource("3_aujq8")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1660467806]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0005493164, -0.14662433, 0.2969427)
+size = Vector3(0.07043457, 0.3447876, 0.066986084)
+material = ExtResource("1_kxho2")
+
+[node name="bullet_spawn" type="Marker3D" parent="." unique_id=780030264]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.39879262)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=594607509]
+stream = ExtResource("4_1x57m")
