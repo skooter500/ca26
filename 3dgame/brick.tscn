@@ -6,7 +6,7 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nkspu"]
 
-[node name="brick" type="RigidBody3D" unique_id=176086891]
+[node name="brick" type="RigidBody3D" unique_id=176086891 groups=["brick"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=771045750]
 shape = SubResource("BoxShape3D_nkspu")

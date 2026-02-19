@@ -3,7 +3,7 @@ extends CSGBox3D
 @export var projectile_scene:PackedScene
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("fire"):
+	if Input.is_action_pressed("fire"):
 		var p = projectile_scene.instantiate()
 		get_tree().root.add_child(p)
 		$AudioStreamPlayer3D.pitch_scale = randf_range(0.5, 1.5)

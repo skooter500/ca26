@@ -10,10 +10,14 @@ config_version=5
 
 [application]
 
-config/name="Computational Arts 111"
+config/name="Computational Arts"
 run/main_scene="uid://d2b6vdvvro2e3"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
+
+[audio]
+
+general/text_to_speech=true
 
 [autoload]
 
