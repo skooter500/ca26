@@ -88,6 +88,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0400221, 0)
 [node name="gun" parent="FirstPersonCharacter/Head/Camera" parent_id_path=PackedInt32Array(1111919887, 514043652) index="1" unique_id=255565113 instance=ExtResource("6_a4dwx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.46313477, -0.1600939, -0.6249975)
 
+[node name="Timer" type="Timer" parent="." unique_id=350188682]
+
 [connection signal="body_entered" from="donut" to="donut" method="_on_body_entered"]
 
 [editable path="FirstPersonCharacter"]
