@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://do8ee7cyvsq7m"]
+
+[ext_resource type="Script" uid="uid://ca7nbiwy02jmx" path="res://tween_art.gd" id="1_q588a"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u55j8"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_aw0ra"]
+sky_material = SubResource("ProceduralSkyMaterial_u55j8")
+
+[sub_resource type="Environment" id="Environment_iqciw"]
+background_mode = 1
+sky = SubResource("Sky_aw0ra")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.5
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Node3D" type="Node3D" unique_id=911888515]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=26555281]
+environment = SubResource("Environment_iqciw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1879739924]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1790549419]
+transform = Transform3D(1, 0, 0, 0, 1, 1.7484555e-07, 0, -1.7484555e-07, 1, 0, 0, 11.373)
+
+[node name="tween_art" type="Node3D" parent="." unique_id=205684587]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0240192, -1.2353237, 0)
+script = ExtResource("1_q588a")

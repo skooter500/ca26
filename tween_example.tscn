@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://c7easy1mq64fb"]
+
+[ext_resource type="Script" uid="uid://dc1jcfi0f1ofl" path="res://tween_cube.gd" id="1_8nsak"]
+[ext_resource type="Script" uid="uid://cxj04dx58x3l5" path="res://tween_example.gd" id="1_y455b"]
+[ext_resource type="Material" uid="uid://bl50ixahs6rqo" path="res://green_material.tres" id="2_u2coe"]
+[ext_resource type="AudioStream" uid="uid://bsn3snkrqoky3" path="res://audio/powerup.sfxr" id="3_v82il"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0lay8"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_8nsak"]
+sky_material = SubResource("ProceduralSkyMaterial_0lay8")
+
+[sub_resource type="Environment" id="Environment_u2coe"]
+background_mode = 1
+sky = SubResource("Sky_8nsak")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.5
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_0lay8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8nsak"]
+transparency = 1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8nsak"]
+size = Vector2(100, 100)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_y455b"]
+
+[node name="Node3D" type="Node3D" unique_id=2043631369]
+script = ExtResource("1_y455b")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1742763782]
+environment = SubResource("Environment_u2coe")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=250981636]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="tween_cube" type="MeshInstance3D" parent="." unique_id=1282888109]
+mesh = SubResource("BoxMesh_0lay8")
+surface_material_override/0 = SubResource("StandardMaterial3D_8nsak")
+script = ExtResource("1_8nsak")
+tt = 10
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2011574104]
+transform = Transform3D(0.90272796, 0, -0.43021178, 0.1450082, 0.9414823, 0.30427563, 0.40503678, -0.3370624, 0.84990245, -2.07654, 1.4104446, 3.7588196)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1392391116]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2392588, 0)
+mesh = SubResource("PlaneMesh_8nsak")
+surface_material_override/0 = ExtResource("2_u2coe")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=141547194]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=1177549696]
+shape = SubResource("WorldBoundaryShape3D_y455b")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1217143281]
+stream = ExtResource("3_v82il")
+
+[node name="Timer" type="Timer" parent="." unique_id=1981868455]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

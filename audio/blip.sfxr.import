@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://c4r4u3bibn7b"
+path="res://.godot/imported/blip.sfxr-b8706814d4b22d23234088a32a17a45d.sample"
+
+[deps]
+
+source_file="res://audio/blip.sfxr"
+dest_files=["res://.godot/imported/blip.sfxr-b8706814d4b22d23234088a32a17a45d.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0
